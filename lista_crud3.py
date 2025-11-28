@@ -52,7 +52,7 @@ def mostrar_todos_clientes(lista_clientes):
     
     print("\n--- Lista de clientes ---")
     for cliente in lista_clientes:
-        print(f"{cliente.mostrar_dados()}")
+        cliente.mostrar_dados()
 
 # Função para atualizar clientes.
 def atualizar_clientes(lista_clientes):
@@ -118,7 +118,15 @@ while True:
 0 - Sair
            """)
     
-    opcao = int(input("Digite uma das opções acima: "))
+    # Evitando erros no programa.
+    # Caso o usuário digite letras.
+    try:
+        opcao = int(input("Digite uma das opções acima: "))
+    except ValueError:
+        print("\nEntrada inválida. Digite um número...")
+        time.sleep(2)
+        os.system("cls || clear")
+        continue
 
     match opcao:
         case 1:
